@@ -60,7 +60,7 @@ struct MinHeap {
           data[(pos - 1)/2] = temp;//Finalize swap, set parent to child's value
           pos = (pos -1) /2; //Move position alongside swap
         }
-        // There is in inbuilt swap() function, but requires additional headers not allowed. <algorithm>
+        // There is in inbuilt swap(a, b) function, but requires additional headers not allowed. <algorithm>
     }
  
     void downheap(int pos, int weightArr[]) {
@@ -73,7 +73,7 @@ struct MinHeap {
         int temp;
         int smallerChild;
         while (((pos - 1) / 2) < size) { //While the left index is less than the heap's size
-          smallerChild = !(((2 * pos) + 1)<((2 * pos) + 2))?((2 * pos) + 1):((2 * pos + 2)); //Ternary operator to check which child is smaller than the other
+          smallerChild = !(data[((2 * pos) + 2)]<data[((2 * pos) + 1)])?((2 * pos) + 1):((2 * pos) + 2); //Equivalent to min(a, b) from <algorithm>
           if (weightArr[data[pos]] < weightArr[data[smallerChild]]) { //If downheap is completed already, breakout before any swaps occur
             break;
           }
@@ -83,7 +83,7 @@ struct MinHeap {
           data[(2 * pos) + 2] = temp;//Finalize swap
           pos = smallerChild; //update positon's height to to continue check
         }
-    //While loop 
+    //While loop
     //Check if left child is less than the total size of heap, if it is equal to size of heap it can be assumed to be the smaller child already
     //After check determine if the left or right is smaller, save tat value
     //The Heap might already be completed at this stage, so check if it is already properly sorted
