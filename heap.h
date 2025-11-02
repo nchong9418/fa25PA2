@@ -90,6 +90,12 @@ struct MinHeap {
     //If not completed the swap starts between the smaller child and parent, downward
     //Update position to child & restart cycle
     }
+
+    //Helper functions 
+    
+    int sizeHeap() {
+      return size;
+    }
 };
 
 #endif

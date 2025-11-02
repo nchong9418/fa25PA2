@@ -98,6 +98,16 @@ int buildEncodingTree(int nextFree) {
     //    - Set left/right pointers
     //    - Push new parent index back into the heap
     // 4. Return the index of the last remaining node (root)
+    MinHeap tree = MinHeap(); //Satisfy p1
+                              //
+    for(int i = 0; i < nextFree; i++) { //Satisfy p2, nextFree based on the createLeafNodes() is the number of leafs there are
+      tree.push(i, weightArr);
+    }
+
+
+    //Create helper function to return the heap size.
+
+
     return -1; // placeholder
 }
 
