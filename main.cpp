@@ -98,17 +98,37 @@ int buildEncodingTree(int nextFree) {
     //    - Set left/right pointers
     //    - Push new parent index back into the heap
     // 4. Return the index of the last remaining node (root)
+
     MinHeap tree = MinHeap(); //Satisfy p1
                               //
     for(int i = 0; i < nextFree; i++) { //Satisfy p2, nextFree based on the createLeafNodes() is the number of leafs there are
       tree.push(i, weightArr);
     }
 
-
+    int small1, small2, parentNode;
     //Create helper function to return the heap size.
+    while (leaf.size() > 1) {
+
+      // 1st condition of p3 satisfied
+      small1 = leaf.pop(weightArr);
+      small2 = leaf.pop(weightArr);
 
 
-    return -1; // placeholder
+      // 2nd condition of p3 satisfied
+      parentNode = small1 + small2;
+
+      // 3rd condition of p3, should use one of the global arrays pre-initialized
+
+      //left pointer
+      //
+      //right pointer
+
+      // 4th condition of p3, semi complete?
+      // leaf.push(parentNode, weightArr); 
+      // nextFree++; <-- update the number of leaf nodes
+    }:
+
+    return -1; // return 0; <-- index last remaining node, or "return leaf[0];" which is the value of that last node, or because all other values get removed make use of leaf.pop(weightArr) to get that final value.
 }
 
 // Step 4: Use an STL stack to generate codes
