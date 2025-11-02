@@ -115,9 +115,12 @@ int buildEncodingTree(int nextFree) {
 
 
       // 2nd condition of p3 satisfied
-      parentNode = small1 + small2;
+      parentNode = nextFree;
+      weightArr[parentNode] = weightArr[small1] + weightArr[small2];//Properly implement weight
+
 
       // 3rd condition of p3, should use one of the global arrays pre-initialized
+      
 
       //left pointer
       //
