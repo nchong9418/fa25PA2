@@ -105,33 +105,39 @@ int buildEncodingTree(int nextFree) {
       tree.push(i, weightArr);
     }
 
-    int small1, small2, parentNode;
-    //Create helper function to return the heap size.
-    while (tree.sizeHeap() > 1) {
+    int leftIndex, rightIndex, parentNode;
+    //Create helper function to return the heap size, within heap.h
+    // Refactored from small1 & small2 to leftIndex & rightIndex for readability
 
+    //Satisfy p3
+    while (tree.sizeHeap() > 1) {
       // 1st condition of p3 satisfied
-      small1 = tree.pop(weightArr);
-      small2 = tree.pop(weightArr);
+      leftIndex  = tree.pop(weightArr);
+      rightIndex = tree.pop(weightArr);
 
 
       // 2nd condition of p3 satisfied
       parentNode = nextFree;
-      weightArr[parentNode] = weightArr[small1] + weightArr[small2];//Properly implement weight
+      weightArr[parentNode] = weightArr[leftIndex] + weightArr[rightIndex];//Properly implement weight
 
 
-      // 3rd condition of p3, should use one of the global arrays pre-initialized
-      
+      // 3rd condition of p3 satisfied
+      leftArr[parentNode] = leftIndex;
+      rightArr[parentNode] = rightIndex;
 
-      //left pointer
-      //
-      //right pointer
 
-      // 4th condition of p3, semi complete?
-      // tree.push(parentNode, weightArr); 
-      // nextFree++; <-- update the number of leaf nodes
+      // 4th condition of p3 satisfied
+      tree.push(parentNode, weightArr);
+      nextFree++; //<-- update the number of leaf nodes
     }
 
-    return -1; // return 0; <-- index last remaining node, or "return tree[0];" which is the value of that last node, or because all other values get removed make use of tree.pop(weightArr) to get that final value.
+
+    //Loop exits leaving size = 0, popping again returns that index's value
+    //Satify p4
+    return tree.pop(weightArr);
+ 
+    //tree is the sum of the left & right arrays, so the "weight"
+    //left & right arrays are the children
 }
 
 // Step 4: Use an STL stack to generate codes
