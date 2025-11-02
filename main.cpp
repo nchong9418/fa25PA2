@@ -107,11 +107,11 @@ int buildEncodingTree(int nextFree) {
 
     int small1, small2, parentNode;
     //Create helper function to return the heap size.
-    while (leaf.size() > 1) {
+    while (tree.size() > 1) {
 
       // 1st condition of p3 satisfied
-      small1 = leaf.pop(weightArr);
-      small2 = leaf.pop(weightArr);
+      small1 = tree.pop(weightArr);
+      small2 = tree.pop(weightArr);
 
 
       // 2nd condition of p3 satisfied
@@ -124,11 +124,11 @@ int buildEncodingTree(int nextFree) {
       //right pointer
 
       // 4th condition of p3, semi complete?
-      // leaf.push(parentNode, weightArr); 
+      // tree.push(parentNode, weightArr); 
       // nextFree++; <-- update the number of leaf nodes
     }:
 
-    return -1; // return 0; <-- index last remaining node, or "return leaf[0];" which is the value of that last node, or because all other values get removed make use of leaf.pop(weightArr) to get that final value.
+    return -1; // return 0; <-- index last remaining node, or "return tree[0];" which is the value of that last node, or because all other values get removed make use of tree.pop(weightArr) to get that final value.
 }
 
 // Step 4: Use an STL stack to generate codes
