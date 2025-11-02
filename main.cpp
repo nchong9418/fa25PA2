@@ -107,7 +107,7 @@ int buildEncodingTree(int nextFree) {
 
     int small1, small2, parentNode;
     //Create helper function to return the heap size.
-    while (tree.size() > 1) {
+    while (tree.sizeHeap() > 1) {
 
       // 1st condition of p3 satisfied
       small1 = tree.pop(weightArr);
@@ -126,7 +126,7 @@ int buildEncodingTree(int nextFree) {
       // 4th condition of p3, semi complete?
       // tree.push(parentNode, weightArr); 
       // nextFree++; <-- update the number of leaf nodes
-    }:
+    }
 
     return -1; // return 0; <-- index last remaining node, or "return tree[0];" which is the value of that last node, or because all other values get removed make use of tree.pop(weightArr) to get that final value.
 }
