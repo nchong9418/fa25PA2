@@ -49,10 +49,10 @@ struct MinHeap {
     void upheap(int pos, int weightArr[]) {
         // TODO: swap child upward while smaller than parent
         int temp;
-        if (size <= 1) {
+        if (size < 0) {
           cout << "\nNothing to upheap" << endl;
         }
-        while (pos >= 0 && (data[pos] < weightArr[data[(pos - 1) / 2]])) {//Comparison, 
+        while (pos > 0 && (data[pos] < weightArr[data[(pos - 1) / 2]])) {//Comparison,
           // Checks if the heap is empty, breaks out if so
           //Make sure index is within 0 to 64, the higher bound already checked within push
           // Keeps looping while the child "pos" is less than parent

@@ -134,7 +134,9 @@ int buildEncodingTree(int nextFree) {
 
     //Loop exits leaving size = 0, popping again returns that index's value
     //Satify p4
-    return tree.pop(weightArr);
+    int root = tree.pop(weightArr);
+    return root;
+
  
     //tree is the sum of the left & right arrays, so the "weight"
     //left & right arrays are the children
@@ -146,16 +148,21 @@ void generateCodes(int root, string codes[]) {
     // Use stack<pair<int, string>> to simulate DFS traversal.
     // Left edge adds '0', right edge adds '1'.
     // Record code when a leaf node is reached.
-    
+
+    if (leftArr[root] == -1 && rightArr[root] == -1) {
+        // Single-node tree, edge case Mnaju talked about
+        codes[charArr[root] - 'a'] = "0";
+        return;
+    }
     stack<pair<int, string>> huffStack; //Simulate DFS traversal
     huffStack.push(pair<int, string>(root, ""));
 
     while(!huffStack.empty()) { //Start of pairing assingments
       pair<int, string> huffcode = huffStack.top();
+        int index = huffcode.first;
+        string huffmanCode = huffcode.second;
       huffStack.pop();
 
-      int index = huffStack.top().first;
-      string huffmanCode = huffStack.top().second;
 
       if (leftArr[index] == -1 && rightArr[index] == -1) { //If the matching letter is found
         codes[charArr[index] - 'a'] = huffmanCode;
