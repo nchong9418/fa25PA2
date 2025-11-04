@@ -58,7 +58,7 @@ struct MinHeap {
           temp = data[pos];//Save child's value 
           data[pos] = data[(pos - 1)/2];//Set child to parent
           data[(pos - 1)/2] = temp;//Finalize swap, set parent to child's value
-          pos = (pos -1) /2; //Move position alongside swap
+          pos = (pos - 1) / 2; //Move position alongside swap
         }
         // There is in inbuilt swap(a, b) function, but requires additional headers not allowed. <algorithm>
     }

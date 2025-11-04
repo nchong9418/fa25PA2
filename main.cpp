@@ -146,6 +146,7 @@ void generateCodes(int root, string codes[]) {
     // Use stack<pair<int, string>> to simulate DFS traversal.
     // Left edge adds '0', right edge adds '1'.
     // Record code when a leaf node is reached.
+    stack<pair<int, string>> codeStack;
 }
 
 // Step 5: Print table and encoded message
