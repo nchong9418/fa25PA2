@@ -49,7 +49,10 @@ struct MinHeap {
     void upheap(int pos, int weightArr[]) {
         // TODO: swap child upward while smaller than parent
         int temp;
-        while (pos >= 0 && (data[pos] < weightArr[pos])) {//Comparison, 
+        if (size <= 1) {
+          cout << "\nNothing to upheap" << endl;
+        }
+        while (pos >= 0 && (data[pos] < weightArr[data[(pos - 1) / 2]])) {//Comparison, 
           // Checks if the heap is empty, breaks out if so
           //Make sure index is within 0 to 64, the higher bound already checked within push
           // Keeps looping while the child "pos" is less than parent
@@ -65,22 +68,22 @@ struct MinHeap {
  
     void downheap(int pos, int weightArr[]) {
         // TODO: swap parent downward while larger than any child
-        if (size <= 0) { //Incase somehow downheap gets called when empty
-          cout << "\nHeap is empty" << endl;
+        if (size <= 1) { //Incase somehow downheap gets called when empty
+          cout << "\nNothing to downheap" << endl;
           return;
         }
 
         int temp;
         int smallerChild;
         while (((2 * pos) + 1) < size) { //While the left index is less than the heap's size
-          smallerChild = (data[((2 * pos) + 1)]<data[((2 * pos) + 2)])?((2 * pos) + 1):((2 * pos) + 2); //Equivalent to min(a, b) from <algorithm>
+          smallerChild = (((2 * pos) + 2 < size) && (weightArr[data[((2 * pos) + 1)]] < weightArr[data[((2 * pos) + 2)]]))?((2 * pos) + 1):((2 * pos) + 2); //Equivalent to min(a, b) from <algorithm>
           if (weightArr[data[pos]] < weightArr[data[smallerChild]]) { //If downheap is completed already, breakout before any swaps occur
             break;
           }
 
           temp = data[pos]; //save parent value
           data[pos] = data[smallerChild]; //Set parent to child
-          data[(2 * pos) + 2] = temp;//Finalize swap
+          data[smallerChild] = temp;//Finalize swap
           pos = smallerChild; //update positon's height to to continue check
         }
     //While loop
