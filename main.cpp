@@ -147,22 +147,30 @@ void generateCodes(int root, string codes[]) {
     // Left edge adds '0', right edge adds '1'.
     // Record code when a leaf node is reached.
     
-    stack<pair<int, string>> huffStack; \\Simulate DFS traversal
+    stack<pair<int, string>> huffStack; //Simulate DFS traversal
     huffStack.push(pair<int, string>(root, ""));
 
-    int index;
-    while(!codeStack.empty()) { //Start of pairing assingments
-      pair<int, string> huffCode = huffStack.top();
+    while(!huffStack.empty()) { //Start of pairing assingments
+      pair<int, string> huffcode = huffStack.top();
       huffStack.pop();
 
-      if (leftArr[huffcode.first] == -1 && rightArr[huffcode.first] == -1) { //If the matching letter is found
-        huffcode[charArr[huffcode.first] - 'a'] = code.second;
+      int index = huffStack.top().first;
+      string huffmanCode = huffStack.top().second;
+
+      if (leftArr[index] == -1 && rightArr[index] == -1) { //If the matching letter is found
+        codes[charArr[index] - 'a'] = huffmanCode;
       } else {
         //Make a check for left node
+        if (leftArr[index] != -1) {
+          huffStack.push(pair<int, string>(leftArr[index], huffmanCode + "0"));
+        }
         //Make a check for right node
+        if (rightArr[index] != -1) {
+          huffStack.push(pair<int, string>(rightArr[index], huffmanCode + "1"));
+        }
       }
     }
-
+// DO case for single char in a bit
 }
 
 // Step 5: Print table and encoded message
