@@ -146,7 +146,23 @@ void generateCodes(int root, string codes[]) {
     // Use stack<pair<int, string>> to simulate DFS traversal.
     // Left edge adds '0', right edge adds '1'.
     // Record code when a leaf node is reached.
-    stack<pair<int, string>> codeStack;
+    
+    stack<pair<int, string>> huffStack; \\Simulate DFS traversal
+    huffStack.push(pair<int, string>(root, ""));
+
+    int index;
+    while(!codeStack.empty()) { //Start of pairing assingments
+      pair<int, string> huffCode = huffStack.top();
+      huffStack.pop();
+
+      if (leftArr[huffcode.first] == -1 && rightArr[huffcode.first] == -1) { //If the matching letter is found
+        huffcode[charArr[huffcode.first] - 'a'] = code.second;
+      } else {
+        //Make a check for left node
+        //Make a check for right node
+      }
+    }
+
 }
 
 // Step 5: Print table and encoded message
