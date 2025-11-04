@@ -72,7 +72,7 @@ struct MinHeap {
 
         int temp;
         int smallerChild;
-        while (((pos - 1) / 2) < size) { //While the left index is less than the heap's size
+        while (((2 * pos) + 1) < size) { //While the left index is less than the heap's size
           smallerChild = (data[((2 * pos) + 1)]<data[((2 * pos) + 2)])?((2 * pos) + 1):((2 * pos) + 2); //Equivalent to min(a, b) from <algorithm>
           if (weightArr[data[pos]] < weightArr[data[smallerChild]]) { //If downheap is completed already, breakout before any swaps occur
             break;
